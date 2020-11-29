@@ -1,0 +1,21 @@
+<div class="col-md-4 py-3 h-100">
+  <div class="card py-1" style="width: 18rem;height: 34rem;">
+    <img src="assets/img/{{ product.image }}" class="card-img-top" alt="...">
+    <div class="card-body">
+      <a [routerLink]="['/store/product-details', productId]">
+        <h5 class="card-title" [title]="'More details about ' + product.productName">
+          {{ product.productName }}
+        </h5>
+      </a>
+      <p class="card-text" *ngIf="product.description">
+        <span class="font-weight-bold">Description:</span> {{ product.description | slice:0:50 }}
+      </p>
+      <a [routerLink]="['/store/product-details', productId]" class="btn btn-primary">
+        <span class="material-icons">zoom_in</span>Details
+      </a>&nbsp;
+      <a class="btn btn-outline-info" (click)="shareEvent.emit(product.productName)">
+        <span class="material-icons">share</span>Share
+      </a>&nbsp;
+    </div>
+  </div>
+</div>

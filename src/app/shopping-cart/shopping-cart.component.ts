@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
+import { LocalStorageService } from "../local-storage.service";
+
 @Component({
   selector: 'app-shopping-cart',
   templateUrl: './shopping-cart.component.html',
@@ -9,14 +11,10 @@ export class ShoppingCartComponent implements OnInit {
 
   cartContent;
 
-  constructor() { }
+  constructor(private localStorageService: LocalStorageService) { }
 
   ngOnInit(): void {
-    this.loadFromLocalStorage();
-  }
-
-  loadFromLocalStorage() {
-    this.cartContent = JSON.parse(localStorage.getItem('cart')) || [];
+    this.cartContent = this.localStorageService.loadFromLocalStorage();
   }
 
 }
